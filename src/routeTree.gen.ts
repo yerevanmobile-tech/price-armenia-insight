@@ -15,6 +15,7 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as SelectCompanyRouteImport } from './routes/select-company'
 import { Route as AlertsIndexRouteImport } from './routes/alerts.index'
 import { Route as AlertsAlertIdRouteImport } from './routes/alerts.$alertId'
+import { Route as AlertsRulesRouteImport } from './routes/alerts.rules'
 import { Route as CompetitorsIndexRouteImport } from './routes/competitors.index'
 import { Route as CompetitorsRetailerIdRouteImport } from './routes/competitors.$retailerId'
 import { Route as ProductRetailerIdProductIdRouteImport } from './routes/product.$retailerId.$productId'
@@ -49,6 +50,11 @@ const AlertsAlertIdRoute = AlertsAlertIdRouteImport.update({
   path: '/alerts/$alertId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlertsRulesRoute = AlertsRulesRouteImport.update({
+  id: '/alerts/rules',
+  path: '/alerts/rules',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CompetitorsIndexRoute = CompetitorsIndexRouteImport.update({
   id: '/competitors/',
   path: '/competitors/',
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/select-company': typeof SelectCompanyRoute
   '/alerts/$alertId': typeof AlertsAlertIdRoute
+  '/alerts/rules': typeof AlertsRulesRoute
   '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
   '/alerts/': typeof AlertsIndexRoute
   '/competitors/': typeof CompetitorsIndexRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/select-company': typeof SelectCompanyRoute
   '/alerts/$alertId': typeof AlertsAlertIdRoute
+  '/alerts/rules': typeof AlertsRulesRoute
   '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
   '/alerts': typeof AlertsIndexRoute
   '/competitors': typeof CompetitorsIndexRoute
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/select-company': typeof SelectCompanyRoute
   '/alerts/$alertId': typeof AlertsAlertIdRoute
+  '/alerts/rules': typeof AlertsRulesRoute
   '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
   '/alerts/': typeof AlertsIndexRoute
   '/competitors/': typeof CompetitorsIndexRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/select-company'
     | '/alerts/$alertId'
+    | '/alerts/rules'
     | '/competitors/$retailerId'
     | '/alerts/'
     | '/competitors/'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/select-company'
     | '/alerts/$alertId'
+    | '/alerts/rules'
     | '/competitors/$retailerId'
     | '/alerts'
     | '/competitors'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/select-company'
     | '/alerts/$alertId'
+    | '/alerts/rules'
     | '/competitors/$retailerId'
     | '/alerts/'
     | '/competitors/'
@@ -142,6 +154,7 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   SelectCompanyRoute: typeof SelectCompanyRoute
   AlertsAlertIdRoute: typeof AlertsAlertIdRoute
+  AlertsRulesRoute: typeof AlertsRulesRoute
   CompetitorsRetailerIdRoute: typeof CompetitorsRetailerIdRoute
   AlertsIndexRoute: typeof AlertsIndexRoute
   CompetitorsIndexRoute: typeof CompetitorsIndexRoute
@@ -192,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlertsAlertIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alerts/rules': {
+      id: '/alerts/rules'
+      path: '/alerts/rules'
+      fullPath: '/alerts/rules'
+      preLoaderRoute: typeof AlertsRulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/competitors/': {
       id: '/competitors/'
       path: '/competitors'
@@ -222,6 +242,7 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   SelectCompanyRoute: SelectCompanyRoute,
   AlertsAlertIdRoute: AlertsAlertIdRoute,
+  AlertsRulesRoute: AlertsRulesRoute,
   CompetitorsRetailerIdRoute: CompetitorsRetailerIdRoute,
   AlertsIndexRoute: AlertsIndexRoute,
   CompetitorsIndexRoute: CompetitorsIndexRoute,
