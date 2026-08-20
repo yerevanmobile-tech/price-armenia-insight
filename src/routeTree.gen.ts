@@ -14,6 +14,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as SelectCompanyRouteImport } from './routes/select-company'
 import { Route as AlertsIndexRouteImport } from './routes/alerts.index'
+import { Route as AlertsAlertIdRouteImport } from './routes/alerts.$alertId'
 import { Route as CompetitorsIndexRouteImport } from './routes/competitors.index'
 import { Route as CompetitorsRetailerIdRouteImport } from './routes/competitors.$retailerId'
 import { Route as ProductRetailerIdProductIdRouteImport } from './routes/product.$retailerId.$productId'
@@ -43,6 +44,11 @@ const AlertsIndexRoute = AlertsIndexRouteImport.update({
   path: '/alerts/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlertsAlertIdRoute = AlertsAlertIdRouteImport.update({
+  id: '/alerts/$alertId',
+  path: '/alerts/$alertId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CompetitorsIndexRoute = CompetitorsIndexRouteImport.update({
   id: '/competitors/',
   path: '/competitors/',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
   '/select-company': typeof SelectCompanyRoute
+  '/alerts/$alertId': typeof AlertsAlertIdRoute
   '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
   '/alerts/': typeof AlertsIndexRoute
   '/competitors/': typeof CompetitorsIndexRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
   '/select-company': typeof SelectCompanyRoute
+  '/alerts/$alertId': typeof AlertsAlertIdRoute
   '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
   '/alerts': typeof AlertsIndexRoute
   '/competitors': typeof CompetitorsIndexRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
   '/select-company': typeof SelectCompanyRoute
+  '/alerts/$alertId': typeof AlertsAlertIdRoute
   '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
   '/alerts/': typeof AlertsIndexRoute
   '/competitors/': typeof CompetitorsIndexRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/dashboard'
     | '/select-company'
+    | '/alerts/$alertId'
     | '/competitors/$retailerId'
     | '/alerts/'
     | '/competitors/'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/dashboard'
     | '/select-company'
+    | '/alerts/$alertId'
     | '/competitors/$retailerId'
     | '/alerts'
     | '/competitors'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/dashboard'
     | '/select-company'
+    | '/alerts/$alertId'
     | '/competitors/$retailerId'
     | '/alerts/'
     | '/competitors/'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   DashboardRoute: typeof DashboardRoute
   SelectCompanyRoute: typeof SelectCompanyRoute
+  AlertsAlertIdRoute: typeof AlertsAlertIdRoute
   CompetitorsRetailerIdRoute: typeof CompetitorsRetailerIdRoute
   AlertsIndexRoute: typeof AlertsIndexRoute
   CompetitorsIndexRoute: typeof CompetitorsIndexRoute
@@ -172,6 +185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlertsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alerts/$alertId': {
+      id: '/alerts/$alertId'
+      path: '/alerts/$alertId'
+      fullPath: '/alerts/$alertId'
+      preLoaderRoute: typeof AlertsAlertIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/competitors/': {
       id: '/competitors/'
       path: '/competitors'
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   DashboardRoute: DashboardRoute,
   SelectCompanyRoute: SelectCompanyRoute,
+  AlertsAlertIdRoute: AlertsAlertIdRoute,
   CompetitorsRetailerIdRoute: CompetitorsRetailerIdRoute,
   AlertsIndexRoute: AlertsIndexRoute,
   CompetitorsIndexRoute: CompetitorsIndexRoute,
