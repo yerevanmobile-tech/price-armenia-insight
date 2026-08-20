@@ -10,33 +10,181 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as SelectCompanyRouteImport } from './routes/select-company'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as AlertsIndexRouteImport } from './routes/alerts.index'
+import { Route as AlertsAlertIdRouteImport } from './routes/alerts.$alertId'
+import { Route as AlertsRulesRouteImport } from './routes/alerts.rules'
+import { Route as CompetitorsIndexRouteImport } from './routes/competitors.index'
+import { Route as CompetitorsRetailerIdRouteImport } from './routes/competitors.$retailerId'
+import { Route as ProductRetailerIdProductIdRouteImport } from './routes/product.$retailerId.$productId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SelectCompanyRoute = SelectCompanyRouteImport.update({
+  id: '/select-company',
+  path: '/select-company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsIndexRoute = AlertsIndexRouteImport.update({
+  id: '/alerts/',
+  path: '/alerts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsAlertIdRoute = AlertsAlertIdRouteImport.update({
+  id: '/alerts/$alertId',
+  path: '/alerts/$alertId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsRulesRoute = AlertsRulesRouteImport.update({
+  id: '/alerts/rules',
+  path: '/alerts/rules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompetitorsIndexRoute = CompetitorsIndexRouteImport.update({
+  id: '/competitors/',
+  path: '/competitors/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompetitorsRetailerIdRoute = CompetitorsRetailerIdRouteImport.update({
+  id: '/competitors/$retailerId',
+  path: '/competitors/$retailerId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductRetailerIdProductIdRoute =
+  ProductRetailerIdProductIdRouteImport.update({
+    id: '/product/$retailerId/$productId',
+    path: '/product/$retailerId/$productId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/auth': typeof AuthRoute
+  '/dashboard': typeof DashboardRoute
+  '/select-company': typeof SelectCompanyRoute
+  '/settings': typeof SettingsRoute
+  '/alerts/$alertId': typeof AlertsAlertIdRoute
+  '/alerts/rules': typeof AlertsRulesRoute
+  '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
+  '/alerts/': typeof AlertsIndexRoute
+  '/competitors/': typeof CompetitorsIndexRoute
+  '/product/$retailerId/$productId': typeof ProductRetailerIdProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/auth': typeof AuthRoute
+  '/dashboard': typeof DashboardRoute
+  '/select-company': typeof SelectCompanyRoute
+  '/settings': typeof SettingsRoute
+  '/alerts/$alertId': typeof AlertsAlertIdRoute
+  '/alerts/rules': typeof AlertsRulesRoute
+  '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
+  '/alerts': typeof AlertsIndexRoute
+  '/competitors': typeof CompetitorsIndexRoute
+  '/product/$retailerId/$productId': typeof ProductRetailerIdProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/auth': typeof AuthRoute
+  '/dashboard': typeof DashboardRoute
+  '/select-company': typeof SelectCompanyRoute
+  '/settings': typeof SettingsRoute
+  '/alerts/$alertId': typeof AlertsAlertIdRoute
+  '/alerts/rules': typeof AlertsRulesRoute
+  '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
+  '/alerts/': typeof AlertsIndexRoute
+  '/competitors/': typeof CompetitorsIndexRoute
+  '/product/$retailerId/$productId': typeof ProductRetailerIdProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/analytics'
+    | '/auth'
+    | '/dashboard'
+    | '/select-company'
+    | '/settings'
+    | '/alerts/$alertId'
+    | '/alerts/rules'
+    | '/competitors/$retailerId'
+    | '/alerts/'
+    | '/competitors/'
+    | '/product/$retailerId/$productId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/analytics'
+    | '/auth'
+    | '/dashboard'
+    | '/select-company'
+    | '/settings'
+    | '/alerts/$alertId'
+    | '/alerts/rules'
+    | '/competitors/$retailerId'
+    | '/alerts'
+    | '/competitors'
+    | '/product/$retailerId/$productId'
+  id:
+    | '__root__'
+    | '/'
+    | '/analytics'
+    | '/auth'
+    | '/dashboard'
+    | '/select-company'
+    | '/settings'
+    | '/alerts/$alertId'
+    | '/alerts/rules'
+    | '/competitors/$retailerId'
+    | '/alerts/'
+    | '/competitors/'
+    | '/product/$retailerId/$productId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnalyticsRoute: typeof AnalyticsRoute
+  AuthRoute: typeof AuthRoute
+  DashboardRoute: typeof DashboardRoute
+  SelectCompanyRoute: typeof SelectCompanyRoute
+  SettingsRoute: typeof SettingsRoute
+  AlertsAlertIdRoute: typeof AlertsAlertIdRoute
+  AlertsRulesRoute: typeof AlertsRulesRoute
+  CompetitorsRetailerIdRoute: typeof CompetitorsRetailerIdRoute
+  AlertsIndexRoute: typeof AlertsIndexRoute
+  CompetitorsIndexRoute: typeof CompetitorsIndexRoute
+  ProductRetailerIdProductIdRoute: typeof ProductRetailerIdProductIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +196,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/select-company': {
+      id: '/select-company'
+      path: '/select-company'
+      fullPath: '/select-company'
+      preLoaderRoute: typeof SelectCompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alerts/': {
+      id: '/alerts/'
+      path: '/alerts'
+      fullPath: '/alerts/'
+      preLoaderRoute: typeof AlertsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alerts/$alertId': {
+      id: '/alerts/$alertId'
+      path: '/alerts/$alertId'
+      fullPath: '/alerts/$alertId'
+      preLoaderRoute: typeof AlertsAlertIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alerts/rules': {
+      id: '/alerts/rules'
+      path: '/alerts/rules'
+      fullPath: '/alerts/rules'
+      preLoaderRoute: typeof AlertsRulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/competitors/': {
+      id: '/competitors/'
+      path: '/competitors'
+      fullPath: '/competitors/'
+      preLoaderRoute: typeof CompetitorsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/competitors/$retailerId': {
+      id: '/competitors/$retailerId'
+      path: '/competitors/$retailerId'
+      fullPath: '/competitors/$retailerId'
+      preLoaderRoute: typeof CompetitorsRetailerIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product/$retailerId/$productId': {
+      id: '/product/$retailerId/$productId'
+      path: '/product/$retailerId/$productId'
+      fullPath: '/product/$retailerId/$productId'
+      preLoaderRoute: typeof ProductRetailerIdProductIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnalyticsRoute: AnalyticsRoute,
+  AuthRoute: AuthRoute,
+  DashboardRoute: DashboardRoute,
+  SelectCompanyRoute: SelectCompanyRoute,
+  SettingsRoute: SettingsRoute,
+  AlertsAlertIdRoute: AlertsAlertIdRoute,
+  AlertsRulesRoute: AlertsRulesRoute,
+  CompetitorsRetailerIdRoute: CompetitorsRetailerIdRoute,
+  AlertsIndexRoute: AlertsIndexRoute,
+  CompetitorsIndexRoute: CompetitorsIndexRoute,
+  ProductRetailerIdProductIdRoute: ProductRetailerIdProductIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
