@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as SelectCompanyRouteImport } from './routes/select-company'
+import { Route as CompetitorsIndexRouteImport } from './routes/competitors.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const SelectCompanyRoute = SelectCompanyRouteImport.update({
   path: '/select-company',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompetitorsIndexRoute = CompetitorsIndexRouteImport.update({
+  id: '/competitors/',
+  path: '/competitors/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
   '/select-company': typeof SelectCompanyRoute
+  '/competitors/': typeof CompetitorsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
   '/select-company': typeof SelectCompanyRoute
+  '/competitors': typeof CompetitorsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,20 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
   '/select-company': typeof SelectCompanyRoute
+  '/competitors/': typeof CompetitorsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/dashboard' | '/select-company'
+  fullPaths: '/' | '/auth' | '/dashboard' | '/select-company' | '/competitors/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/dashboard' | '/select-company'
-  id: '__root__' | '/' | '/auth' | '/dashboard' | '/select-company'
+  to: '/' | '/auth' | '/dashboard' | '/select-company' | '/competitors'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/select-company'
+    | '/competitors/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +82,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   DashboardRoute: typeof DashboardRoute
   SelectCompanyRoute: typeof SelectCompanyRoute
+  CompetitorsIndexRoute: typeof CompetitorsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +115,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SelectCompanyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/competitors/': {
+      id: '/competitors/'
+      path: '/competitors'
+      fullPath: '/competitors/'
+      preLoaderRoute: typeof CompetitorsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +130,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   DashboardRoute: DashboardRoute,
   SelectCompanyRoute: SelectCompanyRoute,
+  CompetitorsIndexRoute: CompetitorsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
