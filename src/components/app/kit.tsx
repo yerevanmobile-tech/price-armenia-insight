@@ -161,8 +161,8 @@ export function RetailerAvatar({
   size = "md",
 }: {
   initials: string;
-  tone?: string;
-  size?: "sm" | "md";
+  tone?: string | undefined;
+  size?: "sm" | "md" | undefined;
 }) {
   return (
     <span
