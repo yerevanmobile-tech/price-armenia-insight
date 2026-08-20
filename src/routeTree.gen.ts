@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as SelectCompanyRouteImport } from './routes/select-company'
+import { Route as AlertsIndexRouteImport } from './routes/alerts.index'
 import { Route as CompetitorsIndexRouteImport } from './routes/competitors.index'
 import { Route as CompetitorsRetailerIdRouteImport } from './routes/competitors.$retailerId'
 import { Route as ProductRetailerIdProductIdRouteImport } from './routes/product.$retailerId.$productId'
@@ -35,6 +36,11 @@ const DashboardRoute = DashboardRouteImport.update({
 const SelectCompanyRoute = SelectCompanyRouteImport.update({
   id: '/select-company',
   path: '/select-company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsIndexRoute = AlertsIndexRouteImport.update({
+  id: '/alerts/',
+  path: '/alerts/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompetitorsIndexRoute = CompetitorsIndexRouteImport.update({
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/select-company': typeof SelectCompanyRoute
   '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
+  '/alerts/': typeof AlertsIndexRoute
   '/competitors/': typeof CompetitorsIndexRoute
   '/product/$retailerId/$productId': typeof ProductRetailerIdProductIdRoute
 }
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/select-company': typeof SelectCompanyRoute
   '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
+  '/alerts': typeof AlertsIndexRoute
   '/competitors': typeof CompetitorsIndexRoute
   '/product/$retailerId/$productId': typeof ProductRetailerIdProductIdRoute
 }
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/select-company': typeof SelectCompanyRoute
   '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
+  '/alerts/': typeof AlertsIndexRoute
   '/competitors/': typeof CompetitorsIndexRoute
   '/product/$retailerId/$productId': typeof ProductRetailerIdProductIdRoute
 }
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/select-company'
     | '/competitors/$retailerId'
+    | '/alerts/'
     | '/competitors/'
     | '/product/$retailerId/$productId'
   fileRoutesByTo: FileRoutesByTo
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/select-company'
     | '/competitors/$retailerId'
+    | '/alerts'
     | '/competitors'
     | '/product/$retailerId/$productId'
   id:
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/select-company'
     | '/competitors/$retailerId'
+    | '/alerts/'
     | '/competitors/'
     | '/product/$retailerId/$productId'
   fileRoutesById: FileRoutesById
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   SelectCompanyRoute: typeof SelectCompanyRoute
   CompetitorsRetailerIdRoute: typeof CompetitorsRetailerIdRoute
+  AlertsIndexRoute: typeof AlertsIndexRoute
   CompetitorsIndexRoute: typeof CompetitorsIndexRoute
   ProductRetailerIdProductIdRoute: typeof ProductRetailerIdProductIdRoute
 }
@@ -152,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SelectCompanyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alerts/': {
+      id: '/alerts/'
+      path: '/alerts'
+      fullPath: '/alerts/'
+      preLoaderRoute: typeof AlertsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/competitors/': {
       id: '/competitors/'
       path: '/competitors'
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   SelectCompanyRoute: SelectCompanyRoute,
   CompetitorsRetailerIdRoute: CompetitorsRetailerIdRoute,
+  AlertsIndexRoute: AlertsIndexRoute,
   CompetitorsIndexRoute: CompetitorsIndexRoute,
   ProductRetailerIdProductIdRoute: ProductRetailerIdProductIdRoute,
 }
