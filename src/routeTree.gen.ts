@@ -15,6 +15,7 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as SelectCompanyRouteImport } from './routes/select-company'
 import { Route as CompetitorsIndexRouteImport } from './routes/competitors.index'
 import { Route as CompetitorsRetailerIdRouteImport } from './routes/competitors.$retailerId'
+import { Route as ProductRetailerIdProductIdRouteImport } from './routes/product.$retailerId.$productId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,12 @@ const CompetitorsRetailerIdRoute = CompetitorsRetailerIdRouteImport.update({
   path: '/competitors/$retailerId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductRetailerIdProductIdRoute =
+  ProductRetailerIdProductIdRouteImport.update({
+    id: '/product/$retailerId/$productId',
+    path: '/product/$retailerId/$productId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByFullPath {
   '/select-company': typeof SelectCompanyRoute
   '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
   '/competitors/': typeof CompetitorsIndexRoute
+  '/product/$retailerId/$productId': typeof ProductRetailerIdProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +70,7 @@ export interface FileRoutesByTo {
   '/select-company': typeof SelectCompanyRoute
   '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
   '/competitors': typeof CompetitorsIndexRoute
+  '/product/$retailerId/$productId': typeof ProductRetailerIdProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +80,7 @@ export interface FileRoutesById {
   '/select-company': typeof SelectCompanyRoute
   '/competitors/$retailerId': typeof CompetitorsRetailerIdRoute
   '/competitors/': typeof CompetitorsIndexRoute
+  '/product/$retailerId/$productId': typeof ProductRetailerIdProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +91,7 @@ export interface FileRouteTypes {
     | '/select-company'
     | '/competitors/$retailerId'
     | '/competitors/'
+    | '/product/$retailerId/$productId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +100,7 @@ export interface FileRouteTypes {
     | '/select-company'
     | '/competitors/$retailerId'
     | '/competitors'
+    | '/product/$retailerId/$productId'
   id:
     | '__root__'
     | '/'
@@ -97,6 +109,7 @@ export interface FileRouteTypes {
     | '/select-company'
     | '/competitors/$retailerId'
     | '/competitors/'
+    | '/product/$retailerId/$productId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,6 +119,7 @@ export interface RootRouteChildren {
   SelectCompanyRoute: typeof SelectCompanyRoute
   CompetitorsRetailerIdRoute: typeof CompetitorsRetailerIdRoute
   CompetitorsIndexRoute: typeof CompetitorsIndexRoute
+  ProductRetailerIdProductIdRoute: typeof ProductRetailerIdProductIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -152,6 +166,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompetitorsRetailerIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/product/$retailerId/$productId': {
+      id: '/product/$retailerId/$productId'
+      path: '/product/$retailerId/$productId'
+      fullPath: '/product/$retailerId/$productId'
+      preLoaderRoute: typeof ProductRetailerIdProductIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -162,6 +183,7 @@ const rootRouteChildren: RootRouteChildren = {
   SelectCompanyRoute: SelectCompanyRoute,
   CompetitorsRetailerIdRoute: CompetitorsRetailerIdRoute,
   CompetitorsIndexRoute: CompetitorsIndexRoute,
+  ProductRetailerIdProductIdRoute: ProductRetailerIdProductIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
